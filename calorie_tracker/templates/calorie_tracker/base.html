@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Calorie Counter{% endblock %}</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         .transition-all {
             transition: all 0.3s ease;
@@ -17,11 +18,12 @@
         <div class="container mx-auto px-4 py-3">
             <div class="flex justify-between items-center">
                 <div class="flex items-center space-x-3">
-                    <span class="text-3xl">🍽️</span>
+                    <i class="fas fa-utensils text-3xl text-gray-700"></i>
                     <h1 class="text-2xl font-bold text-gray-800">Calorie Tracker</h1>
                 </div>
                 <div class="text-sm text-gray-500">
-                    Today's Date: {% now "F j, Y" %}
+                    <i class="far fa-calendar-alt mr-1"></i>
+                    {% now "F j, Y" %}
                 </div>
             </div>
         </div>
@@ -32,6 +34,7 @@
     <div class="container mx-auto px-4 mt-4">
         {% for message in messages %}
         <div class="p-4 rounded-lg mb-3 {% if message.tags == 'success' %}bg-green-100 text-green-700 border-l-4 border-green-500{% elif message.tags == 'error' %}bg-red-100 text-red-700 border-l-4 border-red-500{% else %}bg-blue-100 text-blue-700 border-l-4 border-blue-500{% endif %}">
+            <i class="fas {% if message.tags == 'success' %}fa-check-circle{% elif message.tags == 'error' %}fa-exclamation-circle{% else %}fa-info-circle{% endif %} mr-2"></i>
             {{ message }}
         </div>
         {% endfor %}
@@ -46,7 +49,9 @@
 
     <!-- Footer -->
     <footer class="bg-white mt-12 py-4 text-center text-gray-500 text-sm">
-        <p>&copy; {% now "Y" %} Calorie Tracker - Stay healthy, stay fit! 🏃‍♂️</p>
+        <i class="fas fa-heart text-red-500 mr-1"></i>
+        <p class="inline">&copy; {% now "Y" %} Calorie Tracker - Stay healthy, stay fit!</p>
+        <i class="fas fa-running text-blue-500 ml-1"></i>
     </footer>
 </body>
 </html>
